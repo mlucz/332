@@ -26,6 +26,22 @@ pinit(void)
   initlock(&ptable.lock, "ptable");
 }
 
+//Assignment 1
+//count active processes
+
+int getpcount(void)
+{
+	struct proc *p;
+	int count = 0;
+	acquire(&ptable.lock);
+	for(p = ptable.proc; p < &ptable.proc[NPROC]; p++){
+		if(p->state != UNUSED)
+			count++;
+	}
+	release(&ptable.lock);
+	return count;
+}
+
 //PAGEBREAK: 32
 // Look in the process table for an UNUSED proc.
 // If found, change state to EMBRYO and initialize

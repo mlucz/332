@@ -42,6 +42,13 @@ sys_getpid(void)
   return proc->pid;
 }
 
+//Assignment 1 part A
+int
+sys_getpcount(void)
+{
+	return getpcount();
+}
+
 int
 sys_sbrk(void)
 {
